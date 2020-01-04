@@ -1,0 +1,37 @@
+{
+  "name": "Dockerfile Downloader",
+  "version": "1.0",
+  "description": "Dockerfile downloader from Docker Hub!",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "permissions": [
+    "downloads",
+    "tabs",
+    "https://hub.docker.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://hub.docker.com/layers/*/images/*"
+      ],
+      "js": [
+        "content_scripts.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "web_accessible_resources": [
+    "cloud_download-24px.svg"
+  ],
+  "manifest_version": 2
+}
